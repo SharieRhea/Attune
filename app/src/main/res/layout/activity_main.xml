@@ -10,17 +10,20 @@
         android:id="@+id/mainCalendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
         android:dateTextAppearance="@style/Light"
         android:longClickable="true"
         android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:padding="10dp"
         android:text="@string/listOfDates"
         app:layout_constraintStart_toStartOf="@+id/mainCalendar"
