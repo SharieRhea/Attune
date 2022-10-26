@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Red_Text"><item name="android:textColor">@color/red_main</item></style>
+</resources>
