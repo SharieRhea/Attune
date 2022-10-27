@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Attune</string>
-    <string name="listOfDates">%s</string>
+    <string name="noDate">No date has been selected yet.</string>
 </resources>
