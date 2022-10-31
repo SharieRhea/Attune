@@ -24,6 +24,9 @@ class MainActivity : AppCompatActivity() {
         mainCalendar = findViewById(R.id.mainCalendar)
         editDatesButton = findViewById(R.id.editDates)
 
+        // Initialize a list for period dates.
+        val periodDates = mutableListOf<String>()
+
         // Set dateTextView for startup (no date selected yet).
         dateTextView.text = getString(R.string.noDate)
 
@@ -42,7 +45,13 @@ class MainActivity : AppCompatActivity() {
                     mainCalendar.setOnDateChangeListener(
                         OnDateChangeListener { _, year, month, day ->
                             val dateFormatted = "$month $day $year"
-                            dateTextView.text = dateFormatted
+                            if (dateFormatted !in periodDates) {
+                                periodDates.add(dateFormatted)
+                            }
+                            else {
+                                periodDates.remove(dateFormatted)
+                            }
+                            dateTextView.text = periodDates.toString()
                         }
                     )
                 }
