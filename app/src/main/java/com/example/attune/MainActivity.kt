@@ -1,6 +1,5 @@
 package com.example.attune
 
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -12,9 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
 
     // Initialize CalendarView and TextView for MainActivity.
-    lateinit var dateTextView: TextView
-    lateinit var mainCalendar: CalendarView
-    lateinit var editDatesButton: Button
+    private lateinit var dateTextView: TextView
+    private lateinit var mainCalendar: CalendarView
+    private lateinit var editDatesButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,26 +35,30 @@ class MainActivity : AppCompatActivity() {
             View.OnClickListener {
                 editDatesStatus = !editDatesStatus
                 if (editDatesStatus) {
+                    // Change button text to reflect status.
                     editDatesButton.text = getString(R.string.editDates_Finish)
+
+                    // setOnDateChangeListener so that period dates can be edited.
+                    mainCalendar.setOnDateChangeListener(
+                        OnDateChangeListener { _, year, month, day ->
+                            val dateFormatted = "$month $day $year"
+                            dateTextView.text = dateFormatted
+                        }
+                    )
                 }
                 else {
+                    // Change button text to reflect status.
                     editDatesButton.text = getString(R.string.editDates_Edit)
+
+                    // setOnDateChangeListener so that selecting a date does nothing.
+                    mainCalendar.setOnDateChangeListener(
+                        OnDateChangeListener { _, _, _, _ ->
+                            // Do nothing.
+                        }
+                    )
                 }
             }
         )
-
-        if (editDatesStatus) {
-            // Listen for date to change in mainCalendar, if so, display the selected date.
-            mainCalendar.setOnDateChangeListener(
-                OnDateChangeListener { view, year, month, day ->
-                    var dateFormatted = "$month $day $year"
-                    dateTextView.text = dateFormatted
-                }
-            )
-        }
-        else {
-            mainCalendar.isClickable = false
-        }
 
     } // End OnCreate.
 } // End MainActivity.
