@@ -3,4 +3,6 @@
     <string name="noDate">Click EDIT PERIOD DATES, then tap on dates to add them.</string>
     <string name="editDates_Edit">Edit Period Dates</string>
     <string name="editDates_Finish">Finish Editing Dates</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
